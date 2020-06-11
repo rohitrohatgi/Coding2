@@ -15,16 +15,17 @@ public class GameOfLifeSolution {
                 int liveNeighbours = 0;
                 for(int i = 0; i < 3 ; i++){
                     for(int j = 0; j < 3 ; j++){
-                        if(!(i == 0 && 0 == j)){
+                        if(!(neighbours[i] == 0 && neighbours[j] == 0)){
                             int r = row + neighbours[i];
-                            int c = row + neighbours[j];
+                            int c = col + neighbours[j];
                             if(r >= 0 && c >=0 && r < rows && c < cols && Math.abs(board[r][c]) == 1 ){
+                                // System.out.println(r + " " + c);
                                 liveNeighbours++;
                             }
                         }
                     }
                 }
-
+                // System.out.println(row + " " + col +" " +liveNeighbours);
                 //add rules
                 if(board[row][col] == 1 &&  (liveNeighbours < 2 || liveNeighbours > 3)){
                     board[row][col] = -1;
