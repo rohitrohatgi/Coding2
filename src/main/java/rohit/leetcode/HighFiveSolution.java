@@ -32,6 +32,7 @@ public class HighFiveSolution {
     public static void main(String[] args) {
         int[][] input = {{1,91},{1,92},{2,93},{2,99},{2,98},{2,97},{1,60},{1,58},{2,100},{1,61}};
         HighFiveSolution highFiveSolution = new HighFiveSolution();
+
         System.out.println(highFiveSolution.highFive(input));
     }
 }
