@@ -12,6 +12,7 @@ public class FindLongestWordSolution {
     public String findLongestWord(String s, List< String > d) {
 
         String result = "";
+        //sort the list with length descending order and in natural order if length is same
         Collections.sort(d,(a,b) -> a.length() == b.length()? a.compareTo(b) : Integer.compare(b.length(),a.length()));
 
         System.out.println(d);
