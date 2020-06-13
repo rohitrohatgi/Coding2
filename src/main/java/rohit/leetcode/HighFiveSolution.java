@@ -1,5 +1,6 @@
 package rohit.leetcode;
 
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
 
@@ -8,24 +9,28 @@ import java.util.TreeMap;
  */
 public class HighFiveSolution {
     public int[][] highFive(int[][] items) {
+
         TreeMap<Integer,PriorityQueue<Integer>> map = new TreeMap<>();
-
-        for(int[] item : items){
-            map.computeIfAbsent(item[0],f -> new PriorityQueue<Integer>()).add(item[1]);
-        }
-
-        int[][] result = new int[map.keySet().size()][2];
-        int index = 0;
-        for (Integer i: map.keySet()){
-            PriorityQueue<Integer> pq = map.get(i);
-            int count = pq.size();
-            int sum = 0;
-            while (!pq.isEmpty()){
-                sum += pq.poll();
+        for(int[] score : items){
+            map.computeIfAbsent(score[0],f -> new PriorityQueue<Integer>()).add(score[1]);
+            if(map.get(score[0]).size() > 5){
+                map.get(score[0]).poll();
             }
-            result[index++] = new int[]{i, sum / count};
         }
 
+        int[][] result = new int[map.size()][2];
+        int i = 0;
+        for(int key : map.keySet()){
+            PriorityQueue<Integer> queue = map.get(key);
+            int total = 0;
+            while (!queue.isEmpty()){
+                total += queue.poll();
+            }
+            int avg = total/5;
+            result[i] = new int[]{key,avg};
+            i++;
+        }
+        Arrays.stream(result).forEach(o -> System.out.println(o[0] +" "+o[1]));
         return result;
     }
 
