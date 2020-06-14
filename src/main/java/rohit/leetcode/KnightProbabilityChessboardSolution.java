@@ -19,12 +19,11 @@ public class KnightProbabilityChessboardSolution {
         };
 
         double result = 0.0;
-        double[][] dp2 = new double[N][N];
-        double[][] dp = new double[N][N];
 
-        dp2[r][c] = 1;
+        double[][][] dp = new double[K+1][N][N];
+
+        dp[0][r][c] = 1;
         for(int k = 1; k <= K; k++){
-            dp = new double[N][N];
             for(int i = 0; i < N; i++){
                 for(int j= 0; j < N; j++){
                     for(int d = 0; d < directions.length; d++){
@@ -32,16 +31,15 @@ public class KnightProbabilityChessboardSolution {
                         int prevCol = j - directions[d][1];
                         if(prevCol >= 0 && prevRow >=0 && prevCol < N && prevRow < N){
 
-                            dp[i][j] = dp[i][j] + 0.125 * dp2[prevRow][prevCol];
+                            dp[k][i][j] = dp[k][i][j] + 0.125 * dp[k - 1][prevRow][prevCol];
                         }
 
                     }
                 }
             }
-            dp2 = dp;
         }
 
-        for(double[] rows : dp){
+        for(double[] rows : dp[K]){
             for(double value : rows){
                 result+=value;
             }
