@@ -1,9 +1,6 @@
 package rohit.leetcode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by rohit on 15/6/20.
@@ -29,7 +26,7 @@ class FileSystem {
 
         result.addAll(toReach.directories.keySet());
         result.addAll(toReach.files.keySet());
-
+        Collections.sort(result);
         return result;
 
     }
@@ -52,7 +49,11 @@ class FileSystem {
                 toReach.directories.put(pathArray[i],new Dir());
             toReach = toReach.directories.get(pathArray[i]);
         }
-        toReach.files.put(pathArray[pathArray.length-1],content);
+        String prefix = "";
+        if(toReach.files.containsKey(pathArray[pathArray.length-1])){
+            prefix = toReach.files.get(pathArray[pathArray.length-1]);
+        }
+        toReach.files.put(pathArray[pathArray.length-1],prefix + content);
     }
 
     public String readContentFromFile(String filePath) {
@@ -64,18 +65,6 @@ class FileSystem {
             toReach = toReach.directories.get(pathArray[i]);
         }
         return toReach.files.get(pathArray[pathArray.length-1]);
-    }
-
-    public static void main(String[] args) {
-        FileSystem fileSystem = new FileSystem();
-        System.out.println(fileSystem.ls("/"));
-        fileSystem.mkdir("/Dir/Dir1/Dir2");
-        System.out.println(fileSystem.ls("/"));
-        System.out.println(fileSystem.ls("/Dir"));
-        System.out.println(fileSystem.ls("/Dir/Dir1"));
-
-        fileSystem.addContentToFile("/a/b/c/d","hello");
-        System.out.println(fileSystem.readContentFromFile("/a/b/c/d"));
     }
 }
 
