@@ -61,7 +61,7 @@ public class MedianSortedArrays {
     public static void main(String[] args) {
         MedianSortedArrays medianSortedArrays = new MedianSortedArrays();
         int[] first = {1,2};
-        int[] second = {-1,3};
+        int[] second = {3};
 
 
         System.out.println(medianSortedArrays.findMedianSortedArrays(first,second));
