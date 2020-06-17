@@ -26,35 +26,35 @@ public class FractionAdditionSubtraction {
                 int num = Integer.valueOf(frac.split("/")[0]);
                 int den = Integer.valueOf(frac.split("/")[1]);
                 System.out.println(num +"   "+den);
-                int g = Math.abs(gcd(den, prev_den));
+
                 if(sign.get(i++) == '+'){
-                    prev_num = prev_num * den / g + num * prev_den / g;
+                    prev_num = prev_num * den  + num * prev_den ;
                 }else{
-                    prev_num = prev_num * den / g - num * prev_den / g;
+                    prev_num = prev_num * den  - num * prev_den ;
                 }
-                prev_den = den * prev_den / g;
-                g = Math.abs(gcd(prev_den, prev_num));
+                prev_den *= den;
+
+                int g = gcd(prev_num, prev_den);
+                System.out.println(prev_num+"/"+prev_den+"GCD "+g);
                 prev_num /= g;
                 prev_den /= g;
+                System.out.println(prev_num+"/"+prev_den+"GCD "+g);
             }
         }
         return prev_num+"/"+prev_den;
     }
-
-
-    private int gcd(int den, int prev_den) {
-
-        while (prev_den != 0){
-            int temp = prev_den;
-            prev_den = den % prev_den;
-            den = temp;
-        }
-        return den;
+    private int gcd(int a, int b) {
+        return a != 0 ? gcd(b % a, a) : Math.abs(b);
     }
+
+/*
+    private int gcd(int den, int prev_den) {
+        return den !=0 ? gcd(prev_den% den, den): Math.abs(prev_den);
+    }*/
 
     public static void main(String[] args) {
         FractionAdditionSubtraction fractionAdditionSubtraction = new FractionAdditionSubtraction();
 
-        System.out.println(fractionAdditionSubtraction.fractionAddition("-1/2+-1/2+1/3"));
+        System.out.println(fractionAdditionSubtraction.fractionAddition("-1/2-1/2+1/3"));
     }
 }

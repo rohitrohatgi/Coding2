@@ -1,5 +1,6 @@
 package rohit.leetcode;
 
+import java.security.interfaces.RSAPublicKey;
 import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.TreeMap;
@@ -35,9 +36,16 @@ public class HighFiveSolution {
     }
 
     public static void main(String[] args) {
-        int[][] input = {{1,91},{1,92},{2,93},{2,99},{2,98},{2,97},{1,60},{1,58},{2,100},{1,61}};
+        /*int[][] input = {{1,91},{1,92},{2,93},{2,99},{2,98},{2,97},{1,60},{1,58},{2,100},{1,61}};
         HighFiveSolution highFiveSolution = new HighFiveSolution();
 
-        System.out.println(highFiveSolution.highFive(input));
+        System.out.println(highFiveSolution.highFive(input));*/
+        HighFiveSolution highFiveSolution = new HighFiveSolution();
+        highFiveSolution.test();
+    }
+
+    public void test() {
+        int i = (-66 - 67 + 68)/3;
+        System.out.println(i);
     }
 }
