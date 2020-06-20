@@ -66,7 +66,7 @@ class FileSystem {
         }
         return toReach.files.get(pathArray[pathArray.length-1]);
     }
-}
+
 
 
 /**
@@ -77,3 +77,11 @@ class FileSystem {
  * obj.addContentToFile(filePath,content);
  * String param_4 = obj.readContentFromFile(filePath);
  */
+    public static void main(String[] args) {
+        FileSystem obj = new FileSystem();
+        List<String> param_1 = obj.ls("/");
+        obj.mkdir("/rohit");
+        obj.addContentToFile("/rohit/f1","hello");
+        System.out.println(obj.readContentFromFile("/rohit/f1"));
+    }
+}
