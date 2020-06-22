@@ -74,7 +74,7 @@ class FileSystem {
  * FileSystem obj = new FileSystem();
  * List<String> param_1 = obj.ls(path);
  * obj.mkdir(path);
- * obj.addContentToFile(filePath,content);
+ * obj.addContentToFile(filePath,content)
  * String param_4 = obj.readContentFromFile(filePath);
  */
     public static void main(String[] args) {
