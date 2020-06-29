@@ -1,5 +1,4 @@
 package rohit.leetcode;
-
 /**
  * Created by rohit on 17/6/20.
  */
@@ -33,9 +32,6 @@ public class TrappingRainWater {
             }
 
         }
-
-
         return result;
     }
 }
-

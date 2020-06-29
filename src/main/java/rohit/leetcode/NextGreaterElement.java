@@ -1,7 +1,10 @@
 package rohit.leetcode;
 
 import java.util.Arrays;
+// 12564
+// 6254321
 
+// 6354221
 public class NextGreaterElement {
     public int nextGreaterElement(int n) {
 
@@ -24,7 +27,13 @@ public class NextGreaterElement {
         c[j] = c[i];
         c[i] = temp;
 
-        Arrays.sort(c,i+1,length);
+       // Arrays.sort(c,i+1,length);
+
+        for(int l = i+1, k = length-1; l<k ;l++,k--){
+            char ctemp = c[l];
+            c[l] = c[k];
+            c[k] = ctemp;
+        }
 
         long val = Long.parseLong(new String(c));
         return (val <= Integer.MAX_VALUE) ? (int) val : -1;
