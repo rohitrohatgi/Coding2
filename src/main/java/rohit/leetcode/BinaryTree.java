@@ -28,8 +28,8 @@ public class BinaryTree {
     private void printPostOrderRecursion(TreeNode root){
         if(root == null)
             return;
-        printInOrderRecursion(root.left);
-        printInOrderRecursion(root.right);
+        printPostOrderRecursion(root.left);
+        printPostOrderRecursion(root.right);
         System.out.println("Recursion :" + root.key);
     }
     private void printInOrderStack(TreeNode root){
@@ -82,11 +82,11 @@ public class BinaryTree {
             if(stack.empty()) return;
             root = stack.pop();
 
-            if(!stack.empty() && stack.peek() == root) root = root.right;
-
+            if(!stack.empty() && stack.peek() == root)
+                root = root.right;
             else {
-
-                System.out.println("Stack : "+root.key ); root = null;
+                System.out.println("Stack :"+root.key);
+                root = null;
             }
         }
 
@@ -108,6 +108,11 @@ public class BinaryTree {
 
 
     public static void main(String[] args) {
+        /*
+        *         1
+        *    2        3
+        *  4   5
+        * */
         BinaryTree tree = new BinaryTree();
         tree.root = new TreeNode(1);
         tree.root.left = new TreeNode(2);
