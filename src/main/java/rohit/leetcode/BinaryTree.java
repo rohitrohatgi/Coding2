@@ -77,15 +77,19 @@ public class BinaryTree {
                 stack.push(root);
                 root = root.left;
             }
+         //       442211
 
             // Check for empty stack
             if(stack.empty()) return;
+            // stack      42211
+            // root
             root = stack.pop();
 
             if(!stack.empty() && stack.peek() == root)
                 root = root.right;
             else {
                 System.out.println("Stack :"+root.key);
+                //4 ->
                 root = null;
             }
         }
