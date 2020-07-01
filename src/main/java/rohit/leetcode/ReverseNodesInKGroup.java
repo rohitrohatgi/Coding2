@@ -20,10 +20,10 @@ public class ReverseNodesInKGroup {
 
     public ListNode reverseKGroup(ListNode head, int k) {
         ListNode current = head;
-        int count = k;
+        int count = 0;
 
         //reach K+1
-        while(head != null && count == k){
+        while(current != null && count != k){
             current = current.next;
             count++;
         }
