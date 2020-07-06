@@ -1,5 +1,8 @@
 package others;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class TestDeadLock {
 
     public static void main(String[] args) {
@@ -34,10 +37,29 @@ public class TestDeadLock {
                 }
             }
         };
+        Thread t3 = new Thread(){
+            private InputStream in =  System.in;
+            //public IOBlocked(InputStream is) { in = is; }
+            public void run() {
+                try {
+                    System.out.println("Waiting for read():");
+                    in.read();
+                } catch(IOException e) {
+                    if(Thread.currentThread().isInterrupted()) {
+                        System.out.println("Interrupted from blocked I/O");
+                    } else {
+                        throw new RuntimeException(e);
+                    }
+                }
+                System.out.println("Exiting IOBlocked.run()");
+            }
+        };
 
 
-        t1.start();
-        t2.start();
+      //  t1.start();
+      //  t2.start();
+        System.out.println(25%26);
+        t3.start();
     }
 
 }
