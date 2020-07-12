@@ -21,6 +21,7 @@ public class SearchSuggestionsSystem {
 
     private List<List<String>> searchProduct(String searchWord, Trie root) {
         List<List<String>> result = new ArrayList<>();
+
         Trie t = root;
         for (char c : searchWord.toCharArray()) {
             if (t != null)
