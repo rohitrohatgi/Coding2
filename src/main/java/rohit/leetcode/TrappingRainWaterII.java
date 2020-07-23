@@ -55,7 +55,7 @@ public class TrappingRainWaterII {
 
         while (!queue.isEmpty()){
             Cell cell = queue.poll();
-            visited[cell.row][cell.col] = true;
+           // visited[cell.row][cell.col] = true;
             for(int[] dir : dirs){
                 int x = cell.row + dir[0];
                 int y = cell.col + dir[1];

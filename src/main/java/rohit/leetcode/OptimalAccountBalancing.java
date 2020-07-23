@@ -38,26 +38,24 @@ public class OptimalAccountBalancing {
             summary.put(t[0],summary.getOrDefault(t[0],0) + t[2]);
             summary.put(t[1],summary.getOrDefault(t[1],0) - t[2]);
         }
-
-       // List<Integer> list = summary.values().stream().filter(x -> x != 0).collect(Collectors.toList());
         System.out.println(summary);
-       // System.out.println(list);
         result = minTransfers(new ArrayList<>(summary.values()),0);
         return result;
     }
 
     private int minTransfers(List<Integer> list, int start) {
-        while(start < list.size() && list.get(start) == 0){
+        while(list.size() > start && list.get(start) == 0){
             start++;
         }
-        int r = Integer.MAX_VALUE;
-        if (start == list.size())
+        if(start == list.size())
             return 0;
-        for(int i = start + 1; i < list.size();i++){
-            if(list.get(i) * list.get(start) < 0){
-                list.set(i,list.get(i) + list.get(start));
-                r = Math.min(r,1 + minTransfers(list,1 + start));
-                list.set(i,list.get(i) - list.get(start));
+
+        int r = Integer.MAX_VALUE;
+        for(int i = start + 1; i < list.size() ; i++) {
+            if (list.get(start) * list.get(i) < 0) {
+                list.set(i, list.get(i) + list.get(start));
+                r = Math.min(r, 1 + minTransfers(list, start + 1));
+                list.set(i, list.get(i) - list.get(start));
             }
         }
         return r;
@@ -66,7 +64,14 @@ public class OptimalAccountBalancing {
     public static void main(String[] args) {
         OptimalAccountBalancing optimalAccountBalancing = new OptimalAccountBalancing();
         int[][] input = {{0,1,10}, {2,0,5},{1,0,5}};
-
+/*
         System.out.println(optimalAccountBalancing.minTransfers(input));
+
+        input = new int[][]{{0,1,10}, {1,0,1}, {1,2,5}, {2,0,5}};
+        System.out.println(optimalAccountBalancing.minTransfers(input));
+*/
+        input = new int[][]{{0,1,10}, {0,2,5}, {0,3,20}, {0,4,5}};
+        System.out.println(optimalAccountBalancing.minTransfers(input));
+
     }
 }
