@@ -21,7 +21,7 @@ public class CompletableFutureDemo {
         CompletableFutureDemo cfd = new CompletableFutureDemo();
         try {
             cfd.performAsync();
-            System.out.println("get()->   " + COMPLETABLE_FUTURE.get());
+                System.out.println("get()->   " + COMPLETABLE_FUTURE.get());
             System.out.println("isDone  " + COMPLETABLE_FUTURE.isDone());
         } catch (InterruptedException e) {
             e.printStackTrace();
