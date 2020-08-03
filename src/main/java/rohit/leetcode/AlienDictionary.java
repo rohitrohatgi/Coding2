@@ -69,5 +69,23 @@ public class AlienDictionary {
 
     }
 
+    public static void main(String[] args) {
+        AlienDictionary alienDictionary = new AlienDictionary();
+        String[] input = {"wrt",
+                "wrf",
+                "er",
+                "ett",
+                "rftt"};
+
+        System.out.println(alienDictionary.alienOrder(input));
+        input = new String[]{"b",
+                "c",
+                "e",
+                "et"
+        };
+
+        System.out.println(alienDictionary.alienOrder(input));
+
+    }
 
 }
